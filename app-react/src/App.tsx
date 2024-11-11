@@ -1,34 +1,18 @@
-
 import './App.css'
+import Titulo from './Components/Titulo'
+import Placeholder from './Components/Placeholder'
 
-function App() {
-  const welcome = <h1>Bem vindo ao curso de React</h1>
-  const gostando = true
-  const numero = 3
-  const cursos = ['HTML', 'CSS', 'JS']
-
-
+const App = () => {
   return (
     <>
-      <div>
-        <h1>Aula 01</h1>
-        <h2>Introdução ao React</h2>
-        {welcome}
-        <p>Está gostando do curso? {gostando ? 'Estou curtindo' : <h3>Não estou curtindo</h3>}</p>
-      </div>
-
-      <p className={numero % 2 ? 'impar' : 'par'}>{numero}</p>
-
-      {gostando &&
-        <div>
-          <h3>Estou curtindo muito</h3>
-        </div>}
-
-       {cursos.map((curso) => {
-        return <p>{curso}</p>
-       })}
+      <Titulo
+        nome='js'
+        data='00.4'
+        descricao='azul'>
+     <Placeholder />
+      </Titulo>
     </>
   )
 }
 
-export default App
+export default App 
