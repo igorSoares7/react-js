@@ -1,20 +1,24 @@
 interface TituloProps {
-    nome:string;
-    descricao?:string;
-    data:string;
+    nome: string,
+    data: Date,
+    descricao: string,
     children?: React.ReactNode
 }
 
+const Titulo = ({ nome, data, descricao, children}: TituloProps) => {
 
-const Titulo = ({nome, data, descricao, children}:TituloProps) => {
-   return ( <>
-    <h1>Curso de {nome}</h1>
-    <h2>{data}</h2>
-    {descricao}
-    {children}
-    </> 
- 
- );
-};
+    return (
+        <>
+            <h1>{nome}</h1>
+            <h2>{data.toLocaleDateString()}</h2>
+            <hr />
+            {descricao}
+            <hr />
+            {children}
+        </>
+    )
+
+
+}
 
 export default Titulo

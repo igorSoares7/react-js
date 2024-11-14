@@ -1,10 +1,11 @@
-const Placeholder = () => (
-    <>
-    <hr />
-    <hr />
-    <hr />
-    <p>Eu sou o conteúdo children</p>
-    </>
-)
+
+
+const Placeholder = () => {
+    const placeholder = 'Aula 03'
+
+    return (
+    <h3>{placeholder}</h3>
+    )
+}
 
 export default Placeholder
