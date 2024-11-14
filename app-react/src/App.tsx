@@ -1,63 +1,52 @@
-import { useEffect, useState } from "react"
+import React, { useState } from "react"
 import './App.scss'
 import Titulo from './Components/Titulo'
 import Placeholder from './Components/Placeholder'
 import Botao from './Components/Botao'
 
+interface OpcaoCursoProps {
+  item:string,
+}
+
 const App = () => {
 
-  const [numero, setNumero] = useState(0);
-  const [nome, setNome] = useState('')
+  const [curso, setCurso] = useState("Nenhum curso selecionado")
 
-  useEffect(() => {
+  const handlerCurso = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    setCurso(evt.target.value)
+  }
 
+  const cursos = ['ReactJS', 'NodeJS', 'CSS e JS PRO']
 
-      console.log('entrou')
-   
-  }, [numero])
-  
-  useEffect(() => {
-    if (numero =! 0){
-      console.log("Entrou no effect")
-    }    
-
-      console.log('entrou')
-   
-  }, [nome])
-
-
+  const OpcaoCurso = ({item}:OpcaoCursoProps) => (
+      <>
+      <label>
+        <input
+          type="radio"
+          name="curso"
+          value={item}
+          onChange={handlerCurso}
+          checked={curso == item}
+        />
+        {item}
+      </label>
+      <br />
+      </>
+  )
 
   return (
-
-
     <>
-    { nome =! "" &&
-    <p>Você está logado como {nome}</p>
-}
-      <h1>{numero}</h1>
-      <Titulo
-        nome={'Igor'}
-        data={new Date(22, 11, 1900)}
-        descricao={`Curso introdutório ${numero}`}
-      >
-      </Titulo>
-      
-        <h1>Bem vindo {nome}</h1>
 
-      
-      <Placeholder />
-      <Botao label='primary' severity='primary' onClick={() => {
-        setNome('Cicero')
-      }}/>
-      <Botao label='-1' severity='warning' onClick={() => {
-        setNumero(numero - 1)
-      }} />
-      <Botao label='+1' severity='danger' onClick={() => {
-        setNumero(numero + 1)
+      <h1>Ok</h1>
 
-      }}
-      />
-      <h1>{numero}</h1>
+
+      <Titulo nome={curso} />
+
+    {cursos.map((item, index) => {
+      return <OpcaoCurso item={item} key={index} />
+    })}
+
+
     </>
   )
 }
