@@ -10,11 +10,20 @@ const App = () => {
   const [nome, setNome] = useState('')
 
   useEffect(() => {
-    if(numero =! 0){
+
 
       console.log('entrou')
-    }
+   
   }, [numero])
+  
+  useEffect(() => {
+    if (numero =! 0){
+      console.log("Entrou no effect")
+    }    
+
+      console.log('entrou')
+   
+  }, [nome])
 
 
 
@@ -22,6 +31,9 @@ const App = () => {
 
 
     <>
+    { nome =! "" &&
+    <p>Você está logado como {nome}</p>
+}
       <h1>{numero}</h1>
       <Titulo
         nome={'Igor'}
@@ -29,7 +41,10 @@ const App = () => {
         descricao={`Curso introdutório ${numero}`}
       >
       </Titulo>
+      
         <h1>Bem vindo {nome}</h1>
+
+      
       <Placeholder />
       <Botao label='primary' severity='primary' onClick={() => {
         setNome('Cicero')
