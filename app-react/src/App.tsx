@@ -1,61 +1,21 @@
-import React, { useEffect, useState } from "react"
-import Titulo from './Components/Titulo'
-import BotaoCustom from "./Components/Botao/botao.styled"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MenuCustom from "./Components/Menu/Menu.styled"
-import Teste from "./Components/Teste"
-
-interface OpcaoCursoProps {
-  item:string,
-}
+import "./App.scss"
 
 const App = () => {
 
-  const [curso, setCurso] = useState("Nenhum curso selecionado")
-
-  const handlerCurso = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    setCurso(evt.target.value)
-  }
-
-  useEffect(() => {
-    console.log("Mudou o state")
-  })
-  useEffect(() => {
-    console.log("Mudou o state do curso")
-  },[curso])
-
-  const cursos = ['ReactJS', 'NodeJS', 'CSS e JS PRO']
-
-  const OpcaoCurso = ({item}:OpcaoCursoProps) => (
-      <>
-      <label>
-        <input
-          type="radio"
-          name="curso"
-          value={item}
-          onChange={handlerCurso}
-          checked={curso == item}
-        />
-        {item}
-      </label>
-      <br />
-      </>
-  )
-
   return (
     <>
-      <MenuCustom />
-      <h1>Ok</h1>
+      <BrowserRouter>
+        <MenuCustom />
+        <Routes>
+          <Route path="/" element={<h1>HOME</h1>} />
+          <Route path="/formulario" element={<h1>FORMULARIO</h1>} />
+          <Route path="/listagem" element={<h1>LISTAGEM</h1>} />
 
+        </Routes>
 
-      <Titulo nome={curso} />
-
-
-    {cursos.map((item, index) => {
-      return <OpcaoCurso item={item} key={index} />
-    })}
-
-    <BotaoCustom severity="warning" label="Perigoso" />
-    <Teste azul="essa é a azul"></Teste>
+      </BrowserRouter>
     </>
   )
 }
