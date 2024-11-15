@@ -1,17 +1,22 @@
 interface Caixas {
-    azul:string,
-    vermelho?:string,
-    preto?:string
+    label?: string,
+    className?: string,
+    onClick?: React.MouseEventHandler<HTMLButtonElement>,
+    labelBotao?: string
+
 }
 
-const Teste = ({azul, vermelho, preto}:Caixas) => {
+const Teste = ({ label, className, onClick, labelBotao }: Caixas) => {
     return (
         <>
-        <div>{azul}</div>
-        <div>{vermelho}</div>
-        <div>{preto}</div>
+            <h1 className={className}>
+                {label}
+            </h1>
+
+            <button onClick={onClick} className={className}>{labelBotao}</button>
+
         </>
     )
 }
 
-export default Teste
+export default Teste 

@@ -1,23 +1,24 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MenuCustom from "./Components/Menu/Menu.styled"
-import "./App.scss"
+import React, {useState} from "react"
+// import "./App.scss"
+import "./Pages/Home"
+// import Teste from "./Components/Teste"
+import StyledTeste from "./Components/Teste/Teste.styled"
+
 
 const App = () => {
 
+  const [cor, setCor] = useState("")
+
+ 
   return (
     <>
-      <BrowserRouter>
-        <MenuCustom />
-        <Routes>
-          <Route path="/" element={<h1>HOME</h1>} />
-          <Route path="/formulario" element={<h1>FORMULARIO</h1>} />
-          <Route path="/listagem" element={<h1>LISTAGEM</h1>} />
-
-        </Routes>
-
-      </BrowserRouter>
+    <StyledTeste label={cor} className={cor}/>
+      <StyledTeste labelBotao="rosa"  onClick={() => setCor('rosa')}/>
+      <StyledTeste labelBotao='azul' onClick={() => setCor('azul')}/>
     </>
   )
 }
 
-export default App 
+
+
+export default App

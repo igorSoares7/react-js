@@ -8,8 +8,8 @@ const Menu = ({className}:MenuInterface) => {
         <div className={className}>
         <nav>
             <a href="#">Home</a>
-            <a href="#">Formulário</a>
-            <a href="#">Listagem</a>
+            <a href="/formulario">Formulário</a>
+            <a href="/listagem">Listagem</a>
         </nav>
         </div>
         
