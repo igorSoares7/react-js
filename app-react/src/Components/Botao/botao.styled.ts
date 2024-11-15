@@ -1,12 +1,13 @@
-button{
+import styled from "styled-components"
+import Botao from "."
+const BotaoCustom = styled(Botao)`
+     
     padding: 5px;
     margin: 5px;
     color: white;
     border-radius: 3px;
     border:1px solid black;
-    &.impar{
-        color: red;
-    }
+   
     
     &.primary{
         background-color: aquamarine
@@ -20,6 +21,7 @@ button{
         background-color: red
     }
     
-}
 
 
+` 
+export default BotaoCustom

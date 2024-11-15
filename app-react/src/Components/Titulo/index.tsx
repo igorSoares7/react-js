@@ -1,14 +1,22 @@
+import { StyledFooter, StyledTitulo } from "./titulo.styled"
+
+
 interface TituloProps {
     nome: string,
 
 }
 
-const Titulo = ({nome}: TituloProps) => {
+const Titulo = ({ nome }: TituloProps) => {
 
     return (
         <>
-            <h1>{nome}</h1>
-            
+            {/* <h1 className="danger">{nome}</h1> */}
+
+            <StyledTitulo>
+                <div>{nome}</div>
+            </StyledTitulo>
+            <StyledFooter>&copy; targettrust</StyledFooter>
+
         </>
     )
 

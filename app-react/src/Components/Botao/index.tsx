@@ -1,24 +1,19 @@
-import "./botao.scss"
-
-enum Severities {
-    primary,
-    warning,
-    danger
-}
-
 interface BotaoProps {
-    label:string,
-    severity:keyof typeof Severities
-    onClick?:React.MouseEventHandler<HTMLButtonElement>
+    label: string,
+    severity: "danger" | "primary" | "secondary" | "warning"
+    onClick?: React.MouseEventHandler<HTMLButtonElement>
+    className?:string
 }
 
 
 
 
-const Botao = ({label, severity, onClick}:BotaoProps) => {
+const Botao = ({ className, label, severity, onClick }: BotaoProps) => {
     return (
         <>
-            <button className={severity} onClick={onClick}>{label}</button>
+            <button className={`${className} ${severity}`} onClick={onClick}>
+                {label}
+            </button>
         </>
     )
 }
