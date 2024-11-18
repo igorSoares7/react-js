@@ -1,0 +1,25 @@
+button{
+    padding: 5px;
+    margin: 5px;
+    color: white;
+    border-radius: 3px;
+    border:1px solid black;
+    &.impar{
+        color: red;
+    }
+    
+    &.primary{
+        background-color: aquamarine
+    }
+    
+    &.warning{
+        background-color: green;
+    }
+    
+    &.danger{
+        background-color: red
+    }
+    
+}
+
+

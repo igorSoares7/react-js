@@ -1,20 +1,24 @@
-import React, {useState} from "react"
-// import "./App.scss"
+import {BrowserRouter, Routes, Route } from "react-router-dom"
+import "./App.scss"
 import "./Pages/Home"
-// import Teste from "./Components/Teste"
-import StyledTeste from "./Components/Teste/Teste.styled"
-
+import MenuCustom from "./Components/Menu/Menu.styled"
+import Home from "./Pages/Home"
+import Formulario from "./Pages/Formulario"
 
 const App = () => {
 
-  const [cor, setCor] = useState("")
-
- 
   return (
     <>
-    <StyledTeste label={cor} className={cor}/>
-      <StyledTeste labelBotao="rosa"  onClick={() => setCor('rosa')}/>
-      <StyledTeste labelBotao='azul' onClick={() => setCor('azul')}/>
+    <BrowserRouter>
+    <MenuCustom />
+    <Routes>
+
+    <Route path="/" element={<Home />}></Route>
+    <Route path="/formulario" element={<Formulario />}></Route>
+    <Route path="/listagem" element={'LISTAGEM'}></Route>
+
+    </Routes>
+    </BrowserRouter>
     </>
   )
 }
