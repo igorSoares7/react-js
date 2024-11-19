@@ -7,7 +7,7 @@ body {
 #root {
     display: grid;
     grid-template-columns: 0.4fr 0.6fr;
-    grid-template-rows: 20% 80%;
+    grid-template-rows: 10% 90%;
     grid-template-areas:
         "header header"
         "aside section"
