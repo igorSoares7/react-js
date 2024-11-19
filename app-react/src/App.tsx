@@ -6,6 +6,7 @@ import AsideStyled from "./Pages/Aside/AsideStyled"
 import FormularioStyled from "./Pages/Formulario/Formulario.styled"
 import ListagemCustom from "./Pages/Listagem/Listagem.styled"
 import ListagemDetalhes from "./Pages/Listagem/Detalhes"
+import HomeStyled from "./Pages/Home/HomeStyled"
 
 
 
@@ -13,13 +14,13 @@ const App = () => {
 
   return (
     <>
-    <div>
+    
       <BrowserRouter>
         <MenuCustom />
         <AsideStyled />
        <section>
           <Routes>
-            <Route path="/" element={<FormularioStyled/>}></Route>
+            <Route path="/" element={<HomeStyled/>}></Route>
             <Route path="/formulario" element={<FormularioStyled />}></Route>
 
             <Route path="/listagem">
@@ -30,7 +31,7 @@ const App = () => {
           </section>
         
       </BrowserRouter>
-      </div>
+      
     </>
   )
 }

@@ -7,8 +7,8 @@ grid-area: section;
   width: 100%;
   border-collapse: collapse; // Remove espaçamentos entre células
   font-size: 14px;
-  background-color: #f8f9fa; // Fundo claro
-  border: 1px solid #dee2e6; // Bordas sutis
+  background-color: gray; // Fundo claro
+  /* border: 1px solid #dee2e6; // Bordas sutis */
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); // Sombra suave para destaque
 
   th,
