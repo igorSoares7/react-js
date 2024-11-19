@@ -1,3 +1,24 @@
 body {
-    margin: 0px;
+    background-color: gray;
+    
+
+}
+
+#root {
+    display: grid;
+    grid-template-columns: 0.4fr 0.6fr;
+    grid-template-rows: 20% 80%;
+    grid-template-areas:
+        "header header"
+        "aside section"
+        
+    ;
+    
+    gap: 10px;
+
+}
+
+section {
+    border: solid 1px red;
+    grid-area: section;
 }

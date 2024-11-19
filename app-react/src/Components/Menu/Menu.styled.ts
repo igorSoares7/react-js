@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Menu from ".";
 const MenuCustom = styled(Menu)`
-
+  grid-area: header;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,6 +11,7 @@ const MenuCustom = styled(Menu)`
   padding: 5px;
   font-size: 1.5em;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin-bottom: 20px;
  
   
   nav{

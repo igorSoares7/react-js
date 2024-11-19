@@ -5,14 +5,14 @@ interface MenuInterface {
 
 const Menu = ({ className }: MenuInterface) => {
     return (
-        <div className={className}>
+        <header className={className}>
                 <span>&copy; targettrust</span>
             <nav>
                 <a href="/">Home</a>
                 <a href="/formulario">Formulário</a>
                 <a href="/listagem">Listagem</a>
             </nav>
-        </div>
+        </header>
 
     )
 }

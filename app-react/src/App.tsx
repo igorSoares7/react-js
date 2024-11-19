@@ -1,24 +1,36 @@
-import {BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import "./App.scss"
-import "./Pages/Home"
+import "./Pages/Aside"
 import MenuCustom from "./Components/Menu/Menu.styled"
-import Home from "./Pages/Home"
-import Formulario from "./Pages/Formulario"
+import AsideStyled from "./Pages/Aside/AsideStyled"
+import FormularioStyled from "./Pages/Formulario/Formulario.styled"
+import ListagemCustom from "./Pages/Listagem/Listagem.styled"
+import ListagemDetalhes from "./Pages/Listagem/Detalhes"
+
+
 
 const App = () => {
 
   return (
     <>
-    <BrowserRouter>
-    <MenuCustom />
-    <Routes>
+    <div>
+      <BrowserRouter>
+        <MenuCustom />
+        <AsideStyled />
+       <section>
+          <Routes>
+            <Route path="/" element={<FormularioStyled/>}></Route>
+            <Route path="/formulario" element={<FormularioStyled />}></Route>
 
-    <Route path="/" element={<Home />}></Route>
-    <Route path="/formulario" element={<Formulario />}></Route>
-    <Route path="/listagem" element={'LISTAGEM'}></Route>
-
-    </Routes>
-    </BrowserRouter>
+            <Route path="/listagem">
+              <Route index element={<ListagemCustom />} />
+              <Route path=":id" element={<ListagemDetalhes />} />
+            </Route>
+          </Routes>
+          </section>
+        
+      </BrowserRouter>
+      </div>
     </>
   )
 }
