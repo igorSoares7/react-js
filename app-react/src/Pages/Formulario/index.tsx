@@ -1,12 +1,17 @@
-import { StrictMode } from "react"
+import { useState } from "react"
 import BotaoCustom from "../../Components/Botao/botao.styled"
 
 interface className {
     className?: any
 }
+
+
 const Formulario = ({ className }: className) => {
+    const [nome, setNome] = useState("")
+    const [mensagem, setMensagem] = useState("")
+    const [sigla, setSigla] = useState("")
     return (
-        <StrictMode>
+
         <section className={className}>
             <h1>Formulário</h1>
             <label>
@@ -15,22 +20,56 @@ const Formulario = ({ className }: className) => {
                     type="text"
                     name="nome"
                     id="nome"
-                    maxLength={40}
-                    placeholder="Seu nome"
+                    placeholder="Insira seu nome aqui"
+                    value={nome}
+                    onChange={evt => {
+                        setNome(evt.target.value)
+                        console.log({ nome });
+                    }
+
+                    }
+
                 />
             </label>
             <br />
             <br />
             <div>
                 <label>
-                    IDADE:
-                    <input type="number" name="idade" id="idade" min={14} max={99} />
+                    SIGLA:
+                    <input
+                        type="text"
+                        name="sigla"
+                        id="sigla"
+                        placeholder="Insira seu nome aqui"
+                        value={sigla}
+                        onChange={(evt) => {
+                            setSigla(evt.target.value)
+                        }}
+                    />
                 </label>
             </div>
             <br />
-            <BotaoCustom severity="primary" label="ENVIAR" />
+            <BotaoCustom severity="primary" label="ENVIAR" onClick={() => {
+                setMensagem("")
+                if(sigla === "" && nome === "") {
+                    setMensagem("Preencha nome e sigla corretamente")
+                }
+                else if (nome === "") {
+                    setMensagem("Preencha o nome!")
+                }
+
+                else if(sigla === "") {
+                    setMensagem("Preencha a sigla corretamente")
+                }
+
+
+                
+            }}
+            />
+            {mensagem != "" && <div className="mensagem">{mensagem}</div>}
         </section>
-        </StrictMode>
+
+
     )
 }
 export default Formulario
