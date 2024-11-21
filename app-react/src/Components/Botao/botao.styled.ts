@@ -8,5 +8,10 @@ const BotaoCustom = styled(Botao)`
     border:1px solid black;
 
     background-color: blue;
+
+    &.danger{
+        background-color: red;
+    }
+    
 ` 
 export default BotaoCustom

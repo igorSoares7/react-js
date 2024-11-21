@@ -1,13 +1,36 @@
 import { Link } from "react-router-dom";
+import BotaoCustom from "../../Components/Botao/botao.styled";
 
-interface className {
+
+interface ListagemInterface {
     className?: any
 }
 
-const Listagem = ({ className }: className) => {
+
+
+const Listagem = ({ className }: ListagemInterface) => {
+    const items = [
+        {
+            id_departamento: 1,
+            nome: 'Recursos Humanos',
+            sigla: 'RH'
+        },
+        {
+            id_departamento: 2,
+            nome: 'Financeiro',
+            sigla: 'FINANC'
+        },
+        {
+            id_departamento: 3,
+            nome: 'Contabilidade',
+            sigla: 'CONTAB'
+        }
+    ]
+
     return (
-        <section className={className}>
+        <section>
             <h1>Listagem</h1>
+            <BotaoCustom severity="primary" label="voltar"></BotaoCustom>
             <table className={className}>
                 <thead>
                     <tr>
@@ -15,23 +38,21 @@ const Listagem = ({ className }: className) => {
                         <th>Sigla</th>
                     </tr>
                 </thead>
-
                 <tbody>
-                    <tr>
-                        <td>
-                            <Link to="789">Recursos Humanos</Link>
-                        </td>
-                        <td>RH</td>
-                    </tr>
-                    <tr>
-                        <td>Recursos Humanos</td>
-                        <td>RH</td>
-                    </tr>
-                    <tr>
-                        <td>Recursos Humanos</td>
-                        <td>RH</td>
-                    </tr>
+                    {items.map((item) => {
+                        return (
+                            <tr>
+                                <td>
+                                <Link to={`${item.id_departamento}`}>   {item.nome}</Link>
+                                </td>
+                                <td>
+                                    {item.sigla}
+                                </td>
+                            </tr>
+                        )
+                    })}
                 </tbody>
+
             </table>
         </section>
     );

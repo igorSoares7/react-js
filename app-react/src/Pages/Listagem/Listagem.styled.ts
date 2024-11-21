@@ -36,6 +36,13 @@ grid-area: section;
   td {
     color: #495057; // Texto neutro
   }
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  a:hover{
+    text-decoration: underline;
+  }
 `;
 
 
