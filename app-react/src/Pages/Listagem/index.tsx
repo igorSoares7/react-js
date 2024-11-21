@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import BotaoCustom from "../../Components/Botao/botao.styled";
 
 
@@ -9,6 +9,8 @@ interface ListagemInterface {
 
 
 const Listagem = ({ className }: ListagemInterface) => {
+    const navigate = useNavigate()
+
     const items = [
         {
             id_departamento: 1,
@@ -30,7 +32,7 @@ const Listagem = ({ className }: ListagemInterface) => {
     return (
         <section>
             <h1>Listagem</h1>
-            <BotaoCustom severity="primary" label="voltar"></BotaoCustom>
+            <BotaoCustom severity="primary" label="voltar" onClick={() => {navigate("/")}}/>
             <table className={className}>
                 <thead>
                     <tr>
