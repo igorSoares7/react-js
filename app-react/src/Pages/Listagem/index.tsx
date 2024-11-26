@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link , useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BotaoCustom from "../../Components/Botao/botao.styled";
 import api from "../../Services/api";
 
@@ -8,31 +8,41 @@ interface ListagemInterface {
     className?: any
 }
 
-
+type Departamento = {
+    id_departamento: number;
+    nome: string;
+    sigla: string;
+  };
+  
 
 
 const Listagem = ({ className }: ListagemInterface) => {
-    
-const [items, setItems] = useState([])
-    const navigate = useNavigate()
+
+    const [items, setItems] = useState<Departamento[]>([])
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const listaDepartamentos = async () => {
             try {
-            const result = await api.get("/departamentos")
-            setItems(result.data)
-            } catch(e) {
-                console.log("DEU PAU NA API")
+                const result = await api.get("/departamentos")
+                setItems(result.data)
+            } catch (e) {
+                console.log('deu pau na api')
             }
         };
-        listaDepartamentos();
+        if (items.length === 0) {
+
+            listaDepartamentos()
+        }
     }, [items])
+
 
 
     return (
         <section>
             <h1>Listagem</h1>
-            <BotaoCustom severity="primary" label="voltar" onClick={() => {navigate("/")}}/>
+            <BotaoCustom severity="primary" label="voltar" onClick={() => { navigate("/") }} />
             <table className={className}>
                 <thead>
                     <tr>
@@ -41,11 +51,11 @@ const [items, setItems] = useState([])
                     </tr>
                 </thead>
                 <tbody>
-                {items.map((item) => {
+                    {items.map((item,index) => {
                         return (
-                            <tr>
+                            <tr key={index}>
                                 <td>
-                                <Link to={`${item.id_departamento}`}>   {item.nome}</Link>
+                                    <Link to={`${item.id_departamento}`}>   {item.nome}</Link>
                                 </td>
                                 <td>
                                     {item.sigla}

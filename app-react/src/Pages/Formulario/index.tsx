@@ -1,5 +1,7 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import BotaoCustom from "../../Components/Botao/botao.styled"
+import api from "../../Services/api"
 
 interface className {
     className?: any
@@ -7,9 +9,12 @@ interface className {
 
 
 const Formulario = ({ className }: className) => {
+ 
+
     const [nome, setNome] = useState("")
     const [mensagem, setMensagem] = useState("")
     const [sigla, setSigla] = useState("")
+    const navigate = useNavigate()
     return (
 
         <section className={className}>
@@ -24,7 +29,6 @@ const Formulario = ({ className }: className) => {
                     value={nome}
                     onChange={evt => {
                         setNome(evt.target.value)
-                        console.log({ nome });
                     }
 
                     }
@@ -49,7 +53,7 @@ const Formulario = ({ className }: className) => {
                 </label>
             </div>
             <br />
-            <BotaoCustom severity="primary" label="ENVIAR" onClick={() => {
+            <BotaoCustom severity="primary" label="SALVAR" onClick={async () => {
                 setMensagem("")
                 if(sigla === "" && nome === "") {
                     setMensagem("Preencha nome e sigla corretamente")
@@ -58,11 +62,19 @@ const Formulario = ({ className }: className) => {
                     setMensagem("Preencha o nome!")
                 }
 
-                else if(sigla === "") {
+                else if(sigla === "") {  
                     setMensagem("Preencha a sigla corretamente")
                 }
-
-
+                try {
+                await api.post("/departamentos", {
+                     nome: nome,
+                     sigla: sigla
+                })
+                navigate("/listagem")
+            }catch(e:any){
+                const erro = e.response.data.message
+               setMensagem(`[${erro}] Deu erro`)
+            }
                 
             }}
             />
