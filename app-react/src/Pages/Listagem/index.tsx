@@ -18,7 +18,7 @@ type Departamento = {
 
 const Listagem = ({ className }: ListagemInterface) => {
 
-    const [items, setItems] = useState<Departamento[]>([])
+    const [items, setItems] = useState<Departamento[]>([]) 
 
     const navigate = useNavigate();
 
@@ -27,6 +27,7 @@ const Listagem = ({ className }: ListagemInterface) => {
             try {
                 const result = await api.get("/departamentos")
                 setItems(result.data)
+                console.log(result.data)
             } catch (e) {
                 console.log('deu pau na api')
             }
@@ -34,6 +35,7 @@ const Listagem = ({ className }: ListagemInterface) => {
         if (items.length === 0) {
 
             listaDepartamentos()
+            console.log(items)
         }
     }, [items])
 

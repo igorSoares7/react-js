@@ -7,13 +7,17 @@ import FormularioStyled from "./Pages/Formulario/Formulario.styled"
 import ListagemCustom from "./Pages/Listagem/Listagem.styled"
 import ListagemDetalhes from "./Pages/Listagem/Detalhes"
 import HomeStyled from "./Pages/Home/HomeStyled"
+import PrefContext from "./Context/generalContext"
+import { useState } from "react"
 
 
 
 const App = () => {
 
+  const [tema, setTema] = useState('light')
+
   return (
-    <>
+    <PrefContext.Provider value={{tema, setTema}}>
     
       <BrowserRouter>
         <MenuCustom />
@@ -32,7 +36,7 @@ const App = () => {
         
       </BrowserRouter>
       
-    </>
+    </PrefContext.Provider>
   )
 }
 

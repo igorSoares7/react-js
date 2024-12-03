@@ -72,7 +72,7 @@ const Formulario = ({ className }: className) => {
                 })
                 navigate("/listagem")
             }catch(e:any){
-                const erro = e.response.data.message
+                const erro = e?.response?.data?.message
                setMensagem(`[${erro}] Deu erro`)
             }
                 
